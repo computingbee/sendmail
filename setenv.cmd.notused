@@ -1,0 +1,12 @@
+set MongoDB_HOME=%~dp0tools\mongodb
+set NodeJS_HOME=%~dp0tools\nodejs
+set VSCode_HOME=%~dp0tools\ide\vscode
+set path=%path%;%NodeJS_HOME%;%MongoDB_HOME%\bin;%VSCode_HOME%
+
+start "VSCode" cmd /K Code.exe
+rem start "Chrome" cmd /K "C:\Program Files\Google\Chrome\Application\chrome.exe" http://localhost:4200
+
+start "sendmailui" cmd /K "PUSHD %~dp0webapp\frontend\sendmailui & ng serve --host 0.0.0.0 sendmailui"
+start "relaymail" cmd /K "PUSHD %~dp0webapp\backend\relaymail & node . start"
+start "upload-download-files" cmd /K "PUSHD  %~dp0webapp\backend\upload-download-files & node . start"
+

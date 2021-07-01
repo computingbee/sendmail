@@ -1,0 +1,10 @@
+{
+  message: 'RelayMail running at localhost:8084',
+  level: 'info',
+  timestamp: '5/16/2021, 2:53:49 PM'
+}
+{
+  message: 'Connected to Mongo DB',
+  level: 'info',
+  timestamp: '5/16/2021, 2:53:49 PM'
+}

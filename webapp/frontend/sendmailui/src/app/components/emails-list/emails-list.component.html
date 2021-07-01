@@ -1,0 +1,52 @@
+<div>
+    <h4>Email Relay History</h4>
+    <div align=right>
+        Display Limit:
+        <select (change)="handlePageSizeChange($event)">
+            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                {{ size }}
+            </option>
+        </select>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+            (pageChange)="handlePageChange($event)"></pagination-controls>
+    </div>
+</div>
+<table border="0">
+    
+</table>
+<table border='0'>
+    <tr>
+        <th>Sent At</th>
+        <th>Client IP</th>
+        <th>To</th>
+        <th class="text-center">Attachments</th>
+    </tr>
+    <tr *ngFor="
+                let email of emails | paginate: {
+                    itemsPerPage: pageSize,
+                    currentPage: page,
+                    totalItems: count
+                }; let i = index;
+            ">
+        <td>
+            <a [routerLink]=''>
+                <span class="glyphicon glyphicon-plus" id="{{i}}spanID" (click)="showEmailDetails(i)"></span>
+            </a>
+                {{ email.createdAt | date:'yyyy-MM-dd hh:mm:ss a' }}
+    
+                <table border="1" class="emailDetailsHide" id="{{i}}tableID">
+                    <tr><th style='width: 80px; font-size: 8pt;'>ID</th><td style='font-size: 8pt;'>{{ email._id }}</td></tr>
+                    <tr><th style='font-size: 8pt;'>Cc</th><td style='font-size: 8pt;'>{{ email.cc }}</td></tr>
+                    <tr><th style='font-size: 8pt;'>Bcc</th><td style='font-size: 8pt;'>{{ email.bcc }}</td></tr>
+                    <tr><th style='font-size: 8pt;'>Subject</th><td style='font-size: 8pt;'>{{ email.subject }}</td></tr>
+                    <tr><th style='font-size: 8pt;'>Message</th><td style='font-size: 8pt;'>{{ email.message }}</td></tr>
+                </table>
+            
+        </td>
+        <td>{{ email.clientIP }}</td>
+        <td>{{ email.to }}</td>
+        <td>{{ email.attachments }}</td>
+    </tr>
+
+</table>
+

@@ -1,0 +1,14 @@
+table thead tr th td {
+    background: none;
+    background-color: none ;
+}
+
+.emailDetailsHide {
+    visibility: collapse;
+    border-color: inherit;
+}
+
+.emailDetailsShow {
+    visibility: visible;
+    border-color: inherit;
+}
